@@ -1,0 +1,13 @@
+C:\Users\cauah\source\repos\LeitorCSV\LeitorCSV\bin\Debug\netcoreapp3.1\LeitorCSV.exe
+C:\Users\cauah\source\repos\LeitorCSV\LeitorCSV\bin\Debug\netcoreapp3.1\LeitorCSV.deps.json
+C:\Users\cauah\source\repos\LeitorCSV\LeitorCSV\bin\Debug\netcoreapp3.1\LeitorCSV.runtimeconfig.json
+C:\Users\cauah\source\repos\LeitorCSV\LeitorCSV\bin\Debug\netcoreapp3.1\LeitorCSV.runtimeconfig.dev.json
+C:\Users\cauah\source\repos\LeitorCSV\LeitorCSV\bin\Debug\netcoreapp3.1\LeitorCSV.dll
+C:\Users\cauah\source\repos\LeitorCSV\LeitorCSV\bin\Debug\netcoreapp3.1\LeitorCSV.pdb
+C:\Users\cauah\source\repos\LeitorCSV\LeitorCSV\obj\Debug\netcoreapp3.1\LeitorCSV.csprojAssemblyReference.cache
+C:\Users\cauah\source\repos\LeitorCSV\LeitorCSV\obj\Debug\netcoreapp3.1\LeitorCSV.AssemblyInfoInputs.cache
+C:\Users\cauah\source\repos\LeitorCSV\LeitorCSV\obj\Debug\netcoreapp3.1\LeitorCSV.AssemblyInfo.cs
+C:\Users\cauah\source\repos\LeitorCSV\LeitorCSV\obj\Debug\netcoreapp3.1\LeitorCSV.csproj.CoreCompileInputs.cache
+C:\Users\cauah\source\repos\LeitorCSV\LeitorCSV\obj\Debug\netcoreapp3.1\LeitorCSV.dll
+C:\Users\cauah\source\repos\LeitorCSV\LeitorCSV\obj\Debug\netcoreapp3.1\LeitorCSV.pdb
+C:\Users\cauah\source\repos\LeitorCSV\LeitorCSV\obj\Debug\netcoreapp3.1\LeitorCSV.genruntimeconfig.cache
