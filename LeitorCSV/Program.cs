@@ -8,75 +8,54 @@ namespace LeitorCSV
     {
         static void Main(string[] args)
         {
-            StreamReader reader = new StreamReader(@"C:\Users\cauah\OneDrive\Área de Trabalho\Example-Spreadsheet.CSV");
+            StreamReader reader = new StreamReader(@"C:\Users\cauah\OneDrive\Área de Trabalho\CSV\Example-Spreadsheet.CSV");
             
             string[] headers = null;
-            string line = "";
             string jsonComplete = "";
 
             int countHeaders = 0;
 
             while (true)
             {
-                line = reader.ReadLine();
-
-                if(countHeaders == 0)
-                {
-                    headers = line.Split(";");
-                }
+                string line = reader.ReadLine();
+                headers = countHeaders == 0 ? line.Split(";") : headers;
 
                 if (line == null) break;
 
                 int countLines = 1;
+                string json = "";
 
-                foreach(var item in line.Split(";"))
+                var lines = line.Split(";").ToArray();
+
+                json += countHeaders != 0 ? "\t{" : "";
+
+                for(int i = 0; i < lines.Length; i++)
                 {
-                    string json = "";
-
-                    if (!headers.Contains(item))
+                    if (!headers.Contains(lines[i]))
                     {
-                        if(countLines == 1)
-                        {
-                            json += "\t{";
-                        }
-
                         if(countLines != headers.Length)
                         {
-                            if (double.TryParse(item, out double itemParsed))
-                            {
-                                json += $"\"{headers[countLines - 1]}\": {itemParsed.ToString().Replace(",", ".")}, ";
-                            }
-                            else
-                            {
-                                json += $"\"{headers[countLines - 1]}\": \"{item}\", ";
-                            }
+                            json += double.TryParse(lines[i], out double itemParsed) ? 
+                                $"\"{headers[countLines - 1].Replace(" ", "")}\": {itemParsed.ToString().Replace(",", ".")}, " : 
+                                $"\"{headers[countLines - 1].Replace(" ", "")}\": \"{lines[i]}\", ";
                         }
                         else
                         {
-                            if(double.TryParse(item, out double itemParsed))
-                            {
-                                json += $"\"{headers[countLines - 1]}\": {itemParsed.ToString().Replace(",", ".")}";
-                            }
-                            else
-                            {
-                                json += $"\"{headers[countLines - 1]}\": \"{item}\"";
-                            }
-                            
-                            json += "},\n";
+                            json += double.TryParse(lines[i], out double itemParsed) ?
+                                $"\"{headers[countLines - 1].Replace(" ", "")}\": {itemParsed.ToString().Replace(",", ".")}" :
+                                $"\"{headers[countLines - 1].Replace(" ", "")}\": \"{lines[i]}\"";
                         }
                     }
-                    else if(headers.Contains(item))
-                    {
-                        continue;
-                    }
-
-                    jsonComplete += json;
                     countLines++;
                 }
+
+                json += countHeaders != 0 ? "},\n" : "";
+                jsonComplete += json;
+                
                 countHeaders++;
             }
 
-            jsonComplete = "[\n" + jsonComplete.Substring(0, jsonComplete.Length-2) + "\n]";
+            jsonComplete = "[\n" + jsonComplete.Substring(0, jsonComplete.Length - 2) + "\n]";
 
             using(StreamWriter sw = File.CreateText(@"C:\Users\cauah\source\repos\LeitorCSV\LeitorCSV\JSONGerados\JSON.json"))
             {
