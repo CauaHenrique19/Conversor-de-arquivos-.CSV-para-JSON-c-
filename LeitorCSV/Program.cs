@@ -8,7 +8,7 @@ namespace LeitorCSV
     {
         static void Main(string[] args)
         {
-            StreamReader reader = new StreamReader(@"C:\Users\cauah\OneDrive\Área de Trabalho\Pasta1.CSV");
+            StreamReader reader = new StreamReader(@"C:\Users\cauah\OneDrive\Área de Trabalho\Example-Spreadsheet.CSV");
             
             string[] headers = null;
             string line = "";
@@ -40,12 +40,11 @@ namespace LeitorCSV
                             json += "\t{";
                         }
 
-                        if(countLines % headers.Length != 0)
+                        if(countLines != headers.Length)
                         {
-
-                            if (double.TryParse(item, out double itemNumero))
+                            if (double.TryParse(item, out double itemParsed))
                             {
-                                json += $"\"{headers[countLines - 1]}\": {itemNumero.ToString().Replace(",", ".")}, ";
+                                json += $"\"{headers[countLines - 1]}\": {itemParsed.ToString().Replace(",", ".")}, ";
                             }
                             else
                             {
@@ -54,15 +53,15 @@ namespace LeitorCSV
                         }
                         else
                         {
-                            if (double.TryParse(item, out double itemNumero))
+                            if(double.TryParse(item, out double itemParsed))
                             {
-                                json += $"\"{headers[countLines - 1]}\": {itemNumero.ToString().Replace(",", ".")} ";
+                                json += $"\"{headers[countLines - 1]}\": {itemParsed.ToString().Replace(",", ".")}";
                             }
                             else
                             {
                                 json += $"\"{headers[countLines - 1]}\": \"{item}\"";
                             }
-
+                            
                             json += "},\n";
                         }
                     }
@@ -74,7 +73,6 @@ namespace LeitorCSV
                     jsonComplete += json;
                     countLines++;
                 }
-
                 countHeaders++;
             }
 
